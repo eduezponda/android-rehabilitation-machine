@@ -97,10 +97,8 @@ public class SimulationActivity extends AppCompatActivity {
         String id = ((EditText) findViewById(R.id.editTextId)).getText().toString();
         String bloodPressure = ((EditText) findViewById(R.id.editTextBloodPressure)).getText().toString();
 
-        int heartRate = ((SeekBar) findViewById(R.id.seekBarHeartRate)).getProgress();
-        int oxygenSaturation = ((SeekBar) findViewById(R.id.seekBarOxygenSaturation)).getProgress();
 
-        ((MyApp) getApplication()).saveUserStatus(id, heartRate, bloodPressure,oxygenSaturation);
+        //((MyApp) getApplication()).saveUserStatus(id, heartRate, bloodPressure,oxygenSaturation);
 
         openStatus();
     }

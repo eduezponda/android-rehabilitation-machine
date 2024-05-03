@@ -5,60 +5,67 @@ import com.parse.ParseObject;
 
 @ParseClassName("MachineStatus")
 public class UserStatus extends ParseObject {
-    public static final String KEY_ID = "machineId";
-    //public static final String KEY_BATTERY_STATUS = "batteryStatus";
-    //public static final String KEY_TYPE = "type";
-    //public static final String KEY_STATUS = "status";
-    //public static final String KEY_POWER_CONSUMPTION = "powerConsumption";
-    //public static final String KEY_OPERATING_TEMPERATURE = "operatingTemperature";
-    //public static final String KEY_RUNTIME_HOURS = "runtimeHours";
-    public static final String KEY_HEART_RATE = "heartRate";
-    public static final String KEY_BLOOD_PRESSURE = "bloodPressure";
-    public static final String KEY_OXYGEN_SATURATION = "oxygenSaturation";
-    //public static final String KEY_PHOTO = "photo";
+    public static final String KEY_NAME = "sessionName";
+    public static final String KEY_DURATION = "sessionDuration";
+    public static final String KEY_BODY_PART = "sessionBodyPart";
+    public static final String KEY_EXERCISE_MODE = "sessionExerciseMode";
+    public static final String KEY_INTENSITY = "sessionIntensity";
+    public static final String KEY_ID_SUPERVISOR = "sessionIdSupervisor";
+    public static final String KEY_COMMENT = "sessionComment";
 
     public UserStatus() {
         super();
     }
-    public void init(String id, int heartRate, String bloodPressure, int oxygenSaturation) {
-        setId(id);
-        setHeartRate(heartRate);
-        setBloodPressure(bloodPressure);
-        setOxygenSaturation(oxygenSaturation);
+
+    public void init(String name) {
+        setName(name);
     }
 
-    public String getId() {
-        return getString(KEY_BLOOD_PRESSURE);
+    public String getName() {
+        return getString(KEY_NAME);
     }
 
-    public void setId(String id) {
-        put(KEY_ID, id);
-    }
-    public int getHeartRate() {
-        return getInt(KEY_HEART_RATE);
+    public void setName(String name) {
+        put(KEY_NAME, name);
     }
 
-    public void setHeartRate(int heartRate) {
-        put(KEY_HEART_RATE, heartRate);
+    public String getBodyPartFocus() {
+        return getString(KEY_BODY_PART);
     }
 
-    public String getBloodPressure() {
-        return getString(KEY_BLOOD_PRESSURE);
+    public void setBodyPartFocus(String bodyPart) {
+        put(KEY_BODY_PART, bodyPart);
     }
 
-    public void setBloodPressure(String bloodPressure) {
-        put(KEY_BLOOD_PRESSURE, bloodPressure);
+    public String getExerciseMode() {
+        return getString(KEY_EXERCISE_MODE);
     }
 
-    public int getOxygenSaturation() {
-        return getInt(KEY_OXYGEN_SATURATION);
+    public void setExerciseMode(String exerciseMode) {
+        put(KEY_EXERCISE_MODE, exerciseMode);
     }
 
-    public void setOxygenSaturation(int oxygenSaturation) {
-        put(KEY_OXYGEN_SATURATION, oxygenSaturation);
+    public int getIntensity() {
+        return getInt(KEY_INTENSITY);
     }
 
-    public String getUsersData() {
-        return "Heart Rate: " + Integer.toString(getHeartRate()) + ", Blood pressure: " + getBloodPressure() + ", Oxygen Saturation: " + Integer.toString(getOxygenSaturation());
+    public void setIntensity(int intensity) {
+        put(KEY_INTENSITY, intensity);
+    }
+
+    public String getIdSupervisor() {
+        return getString(KEY_ID_SUPERVISOR);
+    }
+
+    public void setIdSupervisor(String idSupervisor) {
+        put(KEY_ID_SUPERVISOR, idSupervisor);
+    }
+
+    public String getComments() {
+        return getString(KEY_COMMENT);
+    }
+
+    public void setComments(String comment) {
+        put(KEY_COMMENT, comment);
     }
 }

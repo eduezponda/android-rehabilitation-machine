@@ -74,33 +74,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayoutOxygenSaturation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.83">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="@string/oxygen_saturation_label" />
-
-        <SeekBar
-            android:id="@+id/seekBarOxygenSaturation"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:max="150"
-            android:progress="75" />
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/linearLayoutHeartRate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -109,23 +82,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.699">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="@string/heart_rate_label" />
-
-        <SeekBar
-            android:id="@+id/seekBarHeartRate"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:max="220"
-            android:progress="110" />
-    </LinearLayout>
+        app:layout_constraintVertical_bias="0.699"/>
 
     <LinearLayout
         android:id="@+id/linearLayoutBloodPressure"
@@ -136,7 +93,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.767">
+        app:layout_constraintVertical_bias="0.599">
 
         <TextView
             android:layout_width="0dp"
@@ -162,42 +119,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.641">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="@string/users_health_label" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayoutRuntimeHours"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.569">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="@string/runtime_hours_label" />
-
-        <EditText
-            android:id="@+id/editTextRuntimeHours"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/hint" />
-    </LinearLayout>
+        app:layout_constraintVertical_bias="0.641"/>
 
     <LinearLayout
         android:id="@+id/linearLayoutOperatingTemperature"
@@ -209,20 +131,27 @@
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop">
 
-        <TextView
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/linearLayoutRuntimeHours"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="@string/operating_temperature_label" />
+            android:orientation="horizontal"
+            android:padding="16dp">
 
-        <SeekBar
-            android:id="@+id/seekBarOperatingTemperature"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:max="60"
-            android:progress="30" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="@string/runtime_hours_label" />
+
+            <EditText
+                android:id="@+id/editTextRuntimeHours"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/hint" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
