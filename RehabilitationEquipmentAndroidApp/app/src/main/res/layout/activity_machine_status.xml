@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="45dp"/>
+        app:layout_constraintGuide_begin="30dp"/>
 
     <LinearLayout
         android:id="@+id/titleLayout"
@@ -39,34 +39,6 @@
             />
     </LinearLayout>
 
-
-    <LinearLayout
-        android:id="@+id/linearLayoutType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/titleLayout"
-        app:layout_constraintVertical_bias="0.288">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="@string/type_label"
-            android:gravity="start"/>
-
-        <TextView
-            android:id="@+id/tvTypeValue"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text=""
-            android:gravity="end"/>
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayoutId"
@@ -105,15 +77,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.179">
+        app:layout_constraintVertical_bias="0.138">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/battery_status_label"
-            android:gravity="start"/>
+            android:gravity="start"
+            android:text="@string/battery_status_label" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -142,23 +114,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.424">
+        app:layout_constraintVertical_bias="0.271">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/power_consumption_label"
-            android:gravity="start"/>
+            android:gravity="start"
+            android:text="@string/power_consumption_label" />
 
         <TextView
             android:id="@+id/tvPowerConsumptionValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text=""
-            android:gravity="end"/>
+            android:gravity="end"
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -170,23 +142,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.49">
+        app:layout_constraintVertical_bias="0.352">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/operating_temperature_label"
-            android:gravity="start"/>
+            android:gravity="start"
+            android:text="@string/operating_temperature_label" />
 
         <TextView
             android:id="@+id/tvOperatingTemperatureValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text=""
-            android:gravity="end"/>
+            android:gravity="end"
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -198,23 +170,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.556">
+        app:layout_constraintVertical_bias="0.458">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/runtime_hours_label"
-            android:gravity="start"/>
+            android:gravity="start"
+            android:text="@string/runtime_hours_label" />
 
         <TextView
             android:id="@+id/tvRuntimeHoursValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text=""
-            android:gravity="end"/>
+            android:gravity="end"
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -226,15 +198,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.637">
+        app:layout_constraintVertical_bias="0.536">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/users_health_label"
-            android:gravity="start"/>
+            android:gravity="start"
+            android:text="@string/users_health_label" />
     </LinearLayout>
 
     <LinearLayout
@@ -246,51 +218,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.696">
+        app:layout_constraintVertical_bias="0.613">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/heart_rate_label"
-            android:gravity="start"/>
+            android:gravity="start"
+            android:text="@string/heart_rate_label" />
 
         <TextView
             android:id="@+id/tvHeartRateValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text=""
-            android:gravity="end"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayoutBloodPressure"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.748">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="@string/blood_pressure_label"
-            android:gravity="start"/>
-
-        <TextView
-            android:id="@+id/tvBloodPressureValue"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text=""
-            android:gravity="end"/>
+            android:gravity="end"
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -302,23 +246,51 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.805">
+        app:layout_constraintVertical_bias="0.69">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/oxygen_saturation_label"
-            android:gravity="start"/>
+            android:gravity="start"
+            android:text="@string/oxygen_saturation_label" />
 
         <TextView
             android:id="@+id/tvOxygenSaturationValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text=""
-            android:gravity="end"/>
+            android:gravity="end"
+            android:text="" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutUserId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
+        app:layout_constraintVertical_bias="0.767">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:text="@string/user_id_label" />
+
+        <TextView
+            android:id="@+id/tvUserId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="end"
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -330,25 +302,25 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.371">
+        app:layout_constraintVertical_bias="0.212">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/status_label"
-            android:gravity="start"/>
+            android:gravity="start"
+            android:text="@string/status_label" />
 
         <TextView
             android:id="@+id/tvStatusValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:gravity="end"
             android:text=""
             tools:layout_editor_absoluteX="142dp"
-            tools:layout_editor_absoluteY="300dp"
-            android:gravity="end"/>
+            tools:layout_editor_absoluteY="300dp" />
 
     </LinearLayout>
 

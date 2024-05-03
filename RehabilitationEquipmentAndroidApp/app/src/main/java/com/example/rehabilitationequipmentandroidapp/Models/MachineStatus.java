@@ -16,30 +16,28 @@ import java.io.ByteArrayOutputStream;
 public class MachineStatus extends ParseObject {
     public static final String KEY_ID = "machineId";
     public static final String KEY_BATTERY_STATUS = "batteryStatus";
-    public static final String KEY_TYPE = "type";
     public static final String KEY_STATUS = "status";
     public static final String KEY_POWER_CONSUMPTION = "powerConsumption";
     public static final String KEY_OPERATING_TEMPERATURE = "operatingTemperature";
     public static final String KEY_RUNTIME_HOURS = "runtimeHours";
     public static final String KEY_HEART_RATE = "heartRate";
-    public static final String KEY_BLOOD_PRESSURE = "bloodPressure";
     public static final String KEY_OXYGEN_SATURATION = "oxygenSaturation";
+    public static final String KEY_USER_ID = "userId";
     public static final String KEY_PHOTO = "photo";
 
     public MachineStatus() {
         super();
     }
-    public void init(String id, int batteryStatus, String type, String status, double powerConsumption, double operatingTemperature, int runtimeHours, int heartRate, String bloodPressure, int oxygenSaturation) {
+    public void init(String id, int batteryStatus, String status, String userId, double powerConsumption, double operatingTemperature, int runtimeHours, int heartRate, int oxygenSaturation) {
         setId(id);
         setBatteryStatus(batteryStatus);
-        setType(type);
         setStatus(status);
         setPowerConsumption(powerConsumption);
         setOperatingTemperature(operatingTemperature);
         setRuntimeHours(runtimeHours);
         setHeartRate(heartRate);
-        setBloodPressure(bloodPressure);
         setOxygenSaturation(oxygenSaturation);
+        setUserId(userId);
     }
 
     public String getId() {
@@ -50,20 +48,20 @@ public class MachineStatus extends ParseObject {
         put(KEY_ID, id);
     }
 
+    public String getUserId() {
+        return getString(KEY_USER_ID);
+    }
+
+    public void setUserId(String id) {
+        put(KEY_USER_ID, id);
+    }
+
     public int getBatteryStatus() {
         return getInt(KEY_BATTERY_STATUS);
     }
 
     public void setBatteryStatus(int batteryStatus) {
         put(KEY_BATTERY_STATUS, batteryStatus);
-    }
-
-    public String getType() {
-        return getString(KEY_TYPE);
-    }
-
-    public void setType(String type) {
-        put(KEY_TYPE, type);
     }
 
     public String getStatus() {
@@ -106,14 +104,6 @@ public class MachineStatus extends ParseObject {
         put(KEY_HEART_RATE, heartRate);
     }
 
-    public String getBloodPressure() {
-        return getString(KEY_BLOOD_PRESSURE);
-    }
-
-    public void setBloodPressure(String bloodPressure) {
-        put(KEY_BLOOD_PRESSURE, bloodPressure);
-    }
-
     public int getOxygenSaturation() {
         return getInt(KEY_OXYGEN_SATURATION);
     }
@@ -123,7 +113,7 @@ public class MachineStatus extends ParseObject {
     }
 
     public String getUsersData() {
-        return "Heart Rate: " + Integer.toString(getHeartRate()) + ", Blood pressure: " + getBloodPressure() + ", Oxygen Saturation: " + Integer.toString(getOxygenSaturation());
+        return "Heart Rate: " + getHeartRate() +  ", Oxygen Saturation: " + getOxygenSaturation();
     }
 
     public void setPhoto(Bitmap photo) {

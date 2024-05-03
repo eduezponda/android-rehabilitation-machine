@@ -20,6 +20,7 @@
     <string name="oxygen_saturation_label">Oxygen saturation:</string>
     <string name="title_status_activity">Status Rehabilitation Equipment</string>
     <string name="users_health_label">User\'s Health:</string>
+    <string name="user_id_label">User id:</string>
 
     <string name="prompt_select_option">Select option</string>
     <string name="hint">Type something here</string>

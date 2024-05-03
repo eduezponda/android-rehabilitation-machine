@@ -45,26 +45,25 @@ public class MyApp extends Application {
 
     /*private void initData() {
         machineStatus = new MachineStatus();
-        machineStatus.init("5Rehabili3841", 80, "Kinesioterapia", "working",200, 20, 9, 150, "120/80", 97);
+        machineStatus.init("5Rehabili3841", 80, 0, "working",200, 20, 9, 150, 97);
     }*/
     public MachineStatus getMachineStatus() {
         return machineStatus;
     }
 
-    public void saveMachineStatus(String id, int batteryStatus, String type, String status, double powerConsumption, double operatingTemperature, int runtimeHours, int heartRate, String bloodPressure, int oxygenSaturation) {
+    public void saveMachineStatus(String id, int batteryStatus, String status, String userId, double powerConsumption, double operatingTemperature, int runtimeHours, int heartRate, int oxygenSaturation) {
         machineStatus = new MachineStatus();
 
         machineStatus.setId(id);
         machineStatus.setBatteryStatus(batteryStatus);
-        machineStatus.setType(type);
         machineStatus.setStatus(status);
         machineStatus.setPowerConsumption(powerConsumption);
         machineStatus.setOperatingTemperature(operatingTemperature);
         machineStatus.setRuntimeHours(runtimeHours);
         machineStatus.setHeartRate(heartRate);
-        machineStatus.setBloodPressure(bloodPressure);
         machineStatus.setOxygenSaturation(oxygenSaturation);
         machineStatus.setPhoto(photo);
+        machineStatus.setUserId(userId);
 
         saveMachineStatusToBack4App();
         statusArray.remove(0);

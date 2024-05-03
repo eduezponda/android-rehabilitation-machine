@@ -69,15 +69,13 @@ public class MachineStatusActivity extends AppCompatActivity {
 
         progressBar.setProgress(machineStatus.getBatteryStatus());
 
-        ((TextView) findViewById(R.id.tvTypeValue)).setText(machineStatus.getType());
-
         ((TextView) findViewById(R.id.tvStatusValue)).setText(machineStatus.getStatus());
         ((TextView) findViewById(R.id.tvPowerConsumptionValue)).setText(machineStatus.getPowerConsumption() + "W");
         ((TextView) findViewById(R.id.tvOperatingTemperatureValue)).setText(machineStatus.getOperatingTemperature() + "º");
         ((TextView) findViewById(R.id.tvRuntimeHoursValue)).setText(machineStatus.getRuntimeHours() + "h");
+        ((TextView) findViewById(R.id.tvUserId)).setText(machineStatus.getUserId());
 
         ((TextView) findViewById(R.id.tvHeartRateValue)).setText(machineStatus.getHeartRate() + " bpm");
-        ((TextView) findViewById(R.id.tvBloodPressureValue)).setText(machineStatus.getBloodPressure());
         ((TextView) findViewById(R.id.tvOxygenSaturationValue)).setText(machineStatus.getOxygenSaturation() + "%");
     }
 

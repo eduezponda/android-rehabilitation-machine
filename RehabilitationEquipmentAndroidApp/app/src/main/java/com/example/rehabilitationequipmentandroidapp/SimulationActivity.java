@@ -25,7 +25,9 @@ import java.util.List;
 public class SimulationActivity extends AppCompatActivity {
 
     Spinner spinnerStatus;
+    Spinner spinnerUser;
     String selectedStatus = "idle";
+    String selectedUserId = "mazapan";
     MyApp App;
 
     @Override
@@ -42,8 +44,14 @@ public class SimulationActivity extends AppCompatActivity {
         List<String> statusOptions = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.status_options)));
         statusOptions.add(0, getString(R.string.prompt_select_option));
 
+        List<String> userOptions = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.status_options)));
+        userOptions.add(0, getString(R.string.prompt_select_option));
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, statusOptions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        ArrayAdapter<String> adapterUser = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, userOptions);
+        adapterUser.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         App = (MyApp) getApplication();
 
@@ -52,13 +60,31 @@ public class SimulationActivity extends AppCompatActivity {
 
         spinnerStatus = findViewById(R.id.spinnerStatus);
         spinnerStatus.setAdapter(adapter);
-
         spinnerStatus.setSelection(0, false);
+
+        spinnerUser = findViewById(R.id.spinnerUserId);
+        spinnerUser.setAdapter(adapterUser);
+        spinnerUser.setSelection(0, false);
+
+
         spinnerStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position > 0) {
                     selectedStatus = parent.getItemAtPosition(position).toString();
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // No se selecciona nada
+            }
+        });
+
+        spinnerUser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position > 0) {
+                    selectedUserId = parent.getItemAtPosition(position).toString();
                 }
             }
             @Override
@@ -97,10 +123,7 @@ public class SimulationActivity extends AppCompatActivity {
 
     private void saveData() {
         String id = ((EditText) findViewById(R.id.editTextId)).getText().toString();
-        String type = ((EditText) findViewById(R.id.editTextType)).getText().toString();
-        String bloodPressure = ((EditText) findViewById(R.id.editTextBloodPressure)).getText().toString();
         int runtimeHours = parseIntOrDefault(((EditText) findViewById(R.id.editTextRuntimeHours)).getText().toString());
-        String status = selectedStatus;
 
         int batteryStatus = ((SeekBar) findViewById(R.id.seekBarBatteryStatus)).getProgress();
         int powerConsumption = ((SeekBar) findViewById(R.id.seekBarPowerConsumption)).getProgress();
@@ -108,7 +131,7 @@ public class SimulationActivity extends AppCompatActivity {
         int heartRate = ((SeekBar) findViewById(R.id.seekBarHeartRate)).getProgress();
         int oxygenSaturation = ((SeekBar) findViewById(R.id.seekBarOxygenSaturation)).getProgress();
 
-        ((MyApp) getApplication()).saveMachineStatus(id, batteryStatus, type, status, powerConsumption, operatingTemperature, runtimeHours, heartRate, bloodPressure,oxygenSaturation);
+        ((MyApp) getApplication()).saveMachineStatus(id, batteryStatus, selectedStatus, selectedUserId, powerConsumption, operatingTemperature, runtimeHours, heartRate, oxygenSaturation);
 
         openStatus();
     }
