@@ -42,7 +42,7 @@ public class MyApp extends Application {
         getFewLatestUserStatus(10, new StatusCallback() {
             @Override
             public void onCallback(ArrayList<UserStatus> status) {
-                statusArray = status;
+
             }
         });
     }
@@ -65,8 +65,8 @@ public class MyApp extends Application {
 
     public UserStatus getUserStatus() {return userStatus;}
 
-    public void saveUserStatus(String name, int duration, String bodyPart, String exerciseMode, int intensity, String idSupervisor, String comment) {
-        UserStatus userStatus = new UserStatus();
+    public void saveUserStatus(Bitmap image, String name, int duration, String bodyPart, String exerciseMode, int intensity, String idSupervisor, String comment) {
+        userStatus = new UserStatus();
 
         userStatus.setName(name);
         userStatus.setDuration(duration);
@@ -76,9 +76,40 @@ public class MyApp extends Application {
         userStatus.setIdSupervisor(idSupervisor);
         userStatus.setComments(comment);
 
+        InterestPoint aInterestPoint;
+
+        aInterestPoint = new InterestPoint();
+        aInterestPoint.setData(userStatus.toArray());
+        aInterestPoint.setImage(image);
+        pointList.add(0, aInterestPoint);
+
+        if (pointList.size() > 10) {
+            pointList.remove(10);
+        }
+
         saveUserStatusToBack4App();
-        statusArray.remove(0);
-        statusArray.add(userStatus);
+    }
+
+    public void updateUserStatus(int index, Bitmap image, String name, int duration, String bodyPart, String exerciseMode, int intensity, String idSupervisor, String comment) {
+        getFewLatestUserStatus(1, new StatusCallback() {
+            @Override
+            public void onCallback(ArrayList<UserStatus> userStatus_) {
+                userStatus = userStatus_.get(0);
+
+                userStatus.setName(name);
+                userStatus.setDuration(duration);
+                userStatus.setBodyPartFocus(bodyPart);
+                userStatus.setExerciseMode(exerciseMode);
+                userStatus.setIntensity(intensity);
+                userStatus.setIdSupervisor(idSupervisor);
+                userStatus.setComments(comment);
+
+                pointList.get(index).setData(userStatus.toArray());
+                pointList.get(index).setImage(image);
+
+                saveUserStatusToBack4App();
+            }
+        });
     }
 
     public void saveUserStatusToBack4App() {

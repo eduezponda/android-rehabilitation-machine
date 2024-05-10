@@ -151,6 +151,7 @@ public class StatusActivity extends AppCompatActivity {
     }
 
     private void onHistoryClicked() {
+        setResult(RESULT_OK);
         finish();
     }
 }

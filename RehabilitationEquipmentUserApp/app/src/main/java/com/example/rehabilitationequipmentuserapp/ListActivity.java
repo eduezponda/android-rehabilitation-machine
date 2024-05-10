@@ -73,7 +73,6 @@ public class ListActivity extends AppCompatActivity implements MyApp.DataInitial
     }
 
     public void initList() {
-
         App.getFewLatestUserStatus(10, new MyApp.StatusCallback() {
             @Override
             public void onCallback(ArrayList<UserStatus> status) {

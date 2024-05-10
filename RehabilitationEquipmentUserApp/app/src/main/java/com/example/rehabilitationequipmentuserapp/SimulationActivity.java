@@ -1,6 +1,7 @@
 package com.example.rehabilitationequipmentuserapp;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,13 +20,16 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class SimulationActivity extends AppCompatActivity {
 
-    Spinner spinnerStatus;
-    String selectedStatus = "working";
-    MyApp App;
+    private Spinner spinnerStatus;
+    private String selectedStatus = "working";
+    private HashMap<String, Integer> diccImagenes = new HashMap<>();
+    private MyApp App;
+    private Integer index = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,18 @@ public class SimulationActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         App = (MyApp) getApplication();
+
+        Intent intent = getIntent();
+        Bundle bundle;
+        if (intent.getExtras() != null) {
+            bundle = intent.getExtras();
+            index = bundle.getInt("position");
+        }
+
+        diccImagenes.put("working", R.drawable.ic_working);
+        diccImagenes.put("sport", R.drawable.ic_sport);
+        diccImagenes.put("maintenance", R.drawable.ic_maintenance);
+        diccImagenes.put("none", R.drawable.ic_none);
 
         spinnerStatus = findViewById(R.id.spinnerStatus);
         spinnerStatus.setAdapter(adapter);
@@ -92,12 +108,23 @@ public class SimulationActivity extends AppCompatActivity {
         String idSupervisor = ((EditText) findViewById(R.id.editTextRuntimeHours)).getText().toString();
         String comments = ((EditText) findViewById(R.id.editTextBloodPressure)).getText().toString();
 
-        ((MyApp) getApplication()).saveUserStatus(name, duration, bodyPart, exerciseMode, intensity, idSupervisor, comments);
+        Integer image = diccImagenes.get(exerciseMode);
+        if (image == null) {
+            image = diccImagenes.get("none");
+        }
+
+        if (index == -1) {
+            App.saveUserStatus(BitmapFactory.decodeResource(getResources(), image), name, duration, bodyPart, exerciseMode, intensity, idSupervisor, comments);
+        }
+        else {
+            App.updateUserStatus(index, BitmapFactory.decodeResource(getResources(), image), name, duration, bodyPart, exerciseMode, intensity, idSupervisor, comments);
+        }
 
         closeActivity();
     }
 
     private void closeActivity() {
+        setResult(RESULT_OK);
         finish();
     }
 }
