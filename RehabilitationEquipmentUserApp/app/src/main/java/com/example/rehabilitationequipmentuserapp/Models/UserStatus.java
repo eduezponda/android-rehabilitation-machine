@@ -3,7 +3,7 @@ package com.example.rehabilitationequipmentuserapp.Models;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
-@ParseClassName("MachineStatus")
+@ParseClassName("UserStatus")
 public class UserStatus extends ParseObject {
     public static final String KEY_NAME = "sessionName";
     public static final String KEY_DURATION = "sessionDuration";
