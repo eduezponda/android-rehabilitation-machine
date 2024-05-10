@@ -16,6 +16,13 @@
     <string name="users_health_label">User\'s Health:</string>
     <string name="rehabilitation_equipment_label">Rehabilitation equipment id:</string>
 
+
+    <string name="type_label">Type:</string>
+    <string name="battery_status_label">Battery status:</string>
+    <string name="status_label">Status:</string>
+    <string name="power_consumption_label">Power consumption:</string>
+    <string name="user_id_label">User id:</string>
+
     <string name="prompt_select_option">Select option</string>
     <string name="hint">Type something here</string>
     <string name="save">Save</string>
