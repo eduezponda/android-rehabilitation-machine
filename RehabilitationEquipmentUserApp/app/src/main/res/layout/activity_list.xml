@@ -24,10 +24,10 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.038"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guidelineTop"
-        app:layout_constraintVertical_bias="0.001">
+        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/tvTitle"
@@ -61,25 +61,26 @@
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="594dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.946"
+        app:layout_constraintVertical_bias="0.679"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <ListView
         android:id="@+id/listText"
         android:layout_width="413dp"
         android:layout_height="514dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="51dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleLayout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/titleLayout"
+        app:layout_constraintVertical_bias="0.041" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

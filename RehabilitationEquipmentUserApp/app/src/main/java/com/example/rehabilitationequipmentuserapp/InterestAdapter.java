@@ -1,10 +1,12 @@
 package com.example.rehabilitationequipmentuserapp;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.rehabilitationequipmentuserapp.Models.InterestPoint;
@@ -27,9 +29,11 @@ public class InterestAdapter extends ArrayAdapter<InterestPoint> {
 
         TextView textName = convertView.findViewById(R.id.text_bold);
         TextView textData = convertView.findViewById(R.id.text_grey);
+        ImageView image = convertView.findViewById(R.id.image);
 
         textName.setText(interestPoint.getName());
         textData.setText(interestPoint.getData());
+        image.setImageBitmap(interestPoint.getImage());
 
         return convertView;
     }

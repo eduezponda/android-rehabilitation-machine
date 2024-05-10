@@ -106,14 +106,15 @@
         android:id="@+id/linearLayoutExerciseMode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="184dp"
         android:orientation="horizontal"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.289">
+        app:layout_constraintTop_toTopOf="@+id/titleLayout"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/textViewExerciseModeLabel"

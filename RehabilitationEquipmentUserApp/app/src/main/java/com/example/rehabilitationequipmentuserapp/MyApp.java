@@ -17,7 +17,11 @@ public class MyApp extends Application {
     private UserStatus userStatus;
     private ArrayList<UserStatus> statusArray;
     private List<InterestPoint> pointList = new ArrayList<>();
-    private Bitmap photo;
+    private DataInitializationListener dataInitializationListener;
+
+    public interface DataInitializationListener {
+        void onDataInitialized();
+    }
 
     @Override
     public void onCreate() {
@@ -55,12 +59,16 @@ public class MyApp extends Application {
         }
     }*/
 
+    public void setDataInitializationListener(DataInitializationListener listener) {
+        this.dataInitializationListener = listener;
+    }
+
     public UserStatus getUserStatus() {return userStatus;}
 
     public void saveUserStatus(String name, int duration, String bodyPart, String exerciseMode, int intensity, String idSupervisor, String comment) {
         UserStatus userStatus = new UserStatus();
 
-        userStatus.init(name);  // Asumiendo que el nombre se proporciona en algún lugar del contexto
+        userStatus.setName(name);
         userStatus.setDuration(duration);
         userStatus.setBodyPartFocus(bodyPart);
         userStatus.setExerciseMode(exerciseMode);
@@ -71,9 +79,6 @@ public class MyApp extends Application {
         saveUserStatusToBack4App();
         statusArray.remove(0);
         statusArray.add(userStatus);
-    }
-    public void savePhoto(Bitmap photo) {
-        this.photo = photo;
     }
 
     public void saveUserStatusToBack4App() {
@@ -127,15 +132,20 @@ public class MyApp extends Application {
         pointList.clear();
     }
 
-    public void initializeList(ArrayList<ArrayList<String>> data) {
+    public void initializeList(ArrayList<ArrayList<String>> data, ArrayList<Bitmap> images) {
 
         InterestPoint aInterestPoint;
         clear();
 
-        for(int i=0; i<3; i++){
+        for (int i = 0; i < data.size(); i++) {
             aInterestPoint = new InterestPoint();
             aInterestPoint.setData(data.get(i));
+            aInterestPoint.setImage(images.get(i));
             pointList.add(i,aInterestPoint);
+        }
+
+        if (dataInitializationListener != null) {
+            dataInitializationListener.onDataInitialized();
         }
     }
 }

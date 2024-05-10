@@ -21,7 +21,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".ListActivity"
+            android:name=".SimulationActivity"
             android:exported="false" />
 
         <meta-data
@@ -35,7 +35,7 @@
             android:value="@string/back4app_client_key" />
 
         <activity
-            android:name=".SimulationActivity"
+            android:name=".ListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

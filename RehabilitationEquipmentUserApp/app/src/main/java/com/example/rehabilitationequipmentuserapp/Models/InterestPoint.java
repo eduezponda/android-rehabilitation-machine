@@ -1,12 +1,15 @@
 package com.example.rehabilitationequipmentuserapp.Models;
 
+import android.graphics.Bitmap;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class InterestPoint {
 
     String Name;
     String Data;
-
+    Bitmap Image;
 
     public InterestPoint(){
     }
@@ -21,6 +24,9 @@ public class InterestPoint {
     }
 
     public String getName() {return this.Name;}
+    public Bitmap getImage() {return this.Image;}
+
+    public void setImage(Bitmap image) {this.Image = image;}
 
     @Override
     public String toString() {

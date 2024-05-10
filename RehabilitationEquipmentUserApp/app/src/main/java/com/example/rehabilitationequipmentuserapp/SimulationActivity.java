@@ -84,13 +84,13 @@ public class SimulationActivity extends AppCompatActivity {
     }
 
     private void saveData() {
-        String name =((EditText) findViewById(R.id.editTextId)).getText().toString();
+        String name = ((EditText) findViewById(R.id.editTextId)).getText().toString();
         int duration = ((SeekBar) findViewById(R.id.seekBarBatteryStatus)).getProgress();
-        String bodyPart =((EditText) findViewById(R.id.editTextType)).getText().toString();
+        String bodyPart = ((EditText) findViewById(R.id.editTextType)).getText().toString();
         int intensity = ((SeekBar) findViewById(R.id.seekBarPowerConsumption)).getProgress();
         String exerciseMode = ((Spinner) findViewById(R.id.spinnerStatus)).getSelectedItem().toString();
-        String idSupervisor =((EditText) findViewById(R.id.editTextRuntimeHours)).getText().toString();
-        String comments =((EditText) findViewById(R.id.editTextBloodPressure)).getText().toString();
+        String idSupervisor = ((EditText) findViewById(R.id.editTextRuntimeHours)).getText().toString();
+        String comments = ((EditText) findViewById(R.id.editTextBloodPressure)).getText().toString();
 
         ((MyApp) getApplication()).saveUserStatus(name, duration, bodyPart, exerciseMode, intensity, idSupervisor, comments);
 
