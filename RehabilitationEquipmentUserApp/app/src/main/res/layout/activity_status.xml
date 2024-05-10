@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SimulationActivity">
+    tools:context=".StatusActivity">
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -33,18 +33,19 @@
             android:layout_width="169dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/title_simulation_activity"
+            android:text="@string/title_status_activity"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/buttonSave"
+            android:id="@+id/buttonEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/save"
+            android:text="@string/edit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -59,55 +60,19 @@
         app:layout_constraintVertical_bias="0.094">
 
         <TextView
-            android:layout_width="0dp"
+            android:id="@+id/textViewNameLabel"
+            android:layout_width="16dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="@string/id_label" />
 
-        <EditText
-            android:id="@+id/editTextId"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/hint" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayoutBloodPressure"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.589">
-
         <TextView
+            android:id="@+id/textViewNameData"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="@string/blood_pressure_label" />
-
-        <EditText
-            android:id="@+id/editTextBloodPressure"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/hint" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayoutOperatingTemperature"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop">
+            android:layout_weight="1" />
 
     </LinearLayout>
 
@@ -120,22 +85,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.433">
+        app:layout_constraintVertical_bias="0.308">
 
         <TextView
+            android:id="@+id/textViewIntensityLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/power_consumption_label" />
+            android:text="@string/intensity_label" />
 
-        <SeekBar
-            android:id="@+id/seekBarPowerConsumption"
-            android:layout_width="100dp"
+        <TextView
+            android:id="@+id/textViewIntensityData"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:max="300"
-            android:progress="150" />
+            android:layout_gravity="center"
+            android:layout_weight="1" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -147,19 +113,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.347">
+        app:layout_constraintVertical_bias="0.253">
 
         <TextView
+            android:id="@+id/textViewExerciseModeLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/status_label" />
+            android:text="@string/exercise_mode_label" />
 
-        <Spinner
-            android:id="@+id/spinnerStatus"
-            android:layout_width="230dp"
-            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/textViewExerciseModeData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1" />
 
     </LinearLayout>
 
@@ -172,21 +141,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.267">
+        app:layout_constraintVertical_bias="0.198">
 
         <TextView
+            android:id="@+id/TextViewBodyPartFocusLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/type_label" />
+            android:text="@string/body_part_focus_label" />
 
-        <EditText
-            android:id="@+id/editTextType"
-            android:layout_width="80dp"
+        <TextView
+            android:id="@+id/textViewBodyPartFocusData"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/hint" />
+            android:layout_gravity="center"
+            android:layout_weight="1" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -197,23 +168,26 @@
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.198">
+        app:layout_constraintVertical_bias="0.143">
 
         <TextView
-            android:layout_width="0dp"
+            android:id="@+id/textViewDurationLabel"
+            android:layout_width="198dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/battery_status_label" />
+            android:text="@string/duration_label" />
 
-        <SeekBar
-            android:id="@+id/seekBarBatteryStatus"
-            android:layout_width="100dp"
+        <TextView
+            android:id="@+id/textViewDurationData"
+            android:layout_width="198dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:max="100"
-            android:progress="50" />
+            android:layout_gravity="center"
+            android:layout_weight="1" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -248,15 +222,15 @@
         app:layout_constraintVertical_bias="0.956" />
 
     <ImageView
-        android:id="@+id/imgStatus"
+        android:id="@+id/imgEdit"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginEnd="108dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:contentDescription="@string/current_status"
         android:focusable="true"
-        android:src="@drawable/ic_status"
+        android:src="@drawable/ic_edit"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -268,22 +242,35 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="347dp">
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="327dp">
 
         <TextView
+            android:id="@+id/textViewRehabilitationEquipmentIdLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/runtime_hours_label" />
+            android:text="@string/rehabilitation_equipment_label" />
 
-        <EditText
-            android:id="@+id/editTextRuntimeHours"
-            android:layout_width="80dp"
+        <TextView
+            android:id="@+id/textViewRehabilitationEquipmentIdData"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/hint" />
+            android:layout_gravity="center"
+            android:layout_weight="1" />
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="168dp"
+        android:layout_marginBottom="296dp"
+        android:layout_weight="1"
+        android:text="@string/status"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
