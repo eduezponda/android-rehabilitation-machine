@@ -91,10 +91,10 @@ public class MyApp extends Application {
     }
 
     public void updateUserStatus(int index, Bitmap image, String name, int duration, String bodyPart, String exerciseMode, int intensity, String idSupervisor, String comment) {
-        getFewLatestUserStatus(1, new StatusCallback() {
+        getFewLatestUserStatus(10, new StatusCallback() {
             @Override
             public void onCallback(ArrayList<UserStatus> userStatus_) {
-                userStatus = userStatus_.get(0);
+                userStatus = userStatus_.get(index);
 
                 userStatus.setName(name);
                 userStatus.setDuration(duration);
