@@ -32,7 +32,7 @@ public class StatusActivity extends AppCompatActivity {
     private BarChart barChart;
 
     private TextView textViewNameData, textViewDurationData, textViewBodyPartFocusData,
-                     textViewExerciseModeData, textViewIntensityData;
+                     textViewExerciseModeData, textViewIntensityData, textViewRehabilitationEquipmentIdData;
     private int index;
 
     @Override
@@ -62,6 +62,12 @@ public class StatusActivity extends AppCompatActivity {
                 String exerciseModeData = status.get(index).getExerciseMode();
                 int intensity = status.get(index).getIntensity();
 
+                textViewNameData = findViewById(R.id.textViewNameData);
+                textViewDurationData = findViewById(R.id.textViewDurationData);
+                textViewBodyPartFocusData = findViewById(R.id.textViewBodyPartFocusData);
+                textViewExerciseModeData = findViewById(R.id.textViewExerciseModeData);
+                textViewIntensityData = findViewById(R.id.textViewIntensityData);
+
                 textViewNameData.setText(name);
                 textViewDurationData.setText(String.valueOf(duration));
                 textViewBodyPartFocusData.setText(bodyPartFocus);
@@ -77,8 +83,6 @@ public class StatusActivity extends AppCompatActivity {
         barChart = findViewById(R.id.barChart);
 
         setupBarChart(barChart);
-
-        updateCharts();
 
         ImageView historyButton, editButton;
 
@@ -96,6 +100,17 @@ public class StatusActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openEdit();
+            }
+        });
+
+        Button buttonStatus = findViewById(R.id.buttonStatus);
+
+        buttonStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textViewRehabilitationEquipmentIdData = findViewById(R.id.textViewRehabilitationEquipmentIdData);
+                textViewRehabilitationEquipmentIdData.setText("COGER DE LA API");
+                updateCharts();
             }
         });
     }
