@@ -37,6 +37,14 @@ public class UserStatus extends ParseObject {
         put(KEY_BODY_PART, bodyPart);
     }
 
+    public String getDuration() {
+        return getString(KEY_DURATION);
+    }
+
+    public void setDuration(int duration) {
+        put(KEY_DURATION, duration);
+    }
+
     public String getExerciseMode() {
         return getString(KEY_EXERCISE_MODE);
     }

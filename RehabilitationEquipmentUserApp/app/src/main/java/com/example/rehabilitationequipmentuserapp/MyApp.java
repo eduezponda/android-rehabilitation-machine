@@ -49,13 +49,16 @@ public class MyApp extends Application {
         return userStatus;
     }
 
-    public void saveUserStatus(String id, int heartRate, String bloodPressure, int oxygenSaturation) {
-        userStatus = new UserStatus();
+    public void saveUserStatus(String name, int duration, String bodyPart, String exerciseMode, int intensity, String idSupervisor, String comment) {
+        UserStatus userStatus = new UserStatus();
 
-        userStatus.setId(id);
-        userStatus.setHeartRate(heartRate);
-        userStatus.setBloodPressure(bloodPressure);
-        userStatus.setOxygenSaturation(oxygenSaturation);
+        userStatus.init(name);  // Asumiendo que el nombre se proporciona en algún lugar del contexto
+        userStatus.setDuration(duration);
+        userStatus.setBodyPartFocus(bodyPart);
+        userStatus.setExerciseMode(exerciseMode);
+        userStatus.setIntensity(intensity);
+        userStatus.setIdSupervisor(idSupervisor);
+        userStatus.setComments(comment);
 
         saveUserStatusToBack4App();
         statusArray.remove(0);
