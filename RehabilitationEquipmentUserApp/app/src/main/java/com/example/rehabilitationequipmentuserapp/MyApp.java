@@ -35,7 +35,7 @@ public class MyApp extends Application {
         statusArray = new ArrayList<>();
         getFewLatestUserStatus();
 
-        getFewLatestUserStatus(new StatusCallback() {
+        getFewLatestUserStatus(10, new StatusCallback() {
             @Override
             public void onCallback(ArrayList<UserStatus> status) {
                 statusArray = status;
@@ -100,9 +100,9 @@ public class MyApp extends Application {
         void onCallback(ArrayList<UserStatus> statusArray);
     }
 
-    public void getFewLatestUserStatus(StatusCallback callback) {
+    public void getFewLatestUserStatus(int limit, StatusCallback callback) {
         ParseQuery<UserStatus> query = ParseQuery.getQuery(UserStatus.class);
-        query.orderByDescending("createdAt").setLimit(3);  // Cambiar el limite para mostrar más elementos en la lista de histórico de pedidos
+        query.orderByDescending("createdAt").setLimit(limit);  // Cambiar el limite para mostrar más elementos en la lista de histórico de pedidos
         query.findInBackground((statusArrayList, e) -> {
             if (e == null) {
                 callback.onCallback(new ArrayList<>(statusArrayList));

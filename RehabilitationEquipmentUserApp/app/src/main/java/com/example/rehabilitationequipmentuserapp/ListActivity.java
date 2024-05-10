@@ -47,7 +47,7 @@ public class ListActivity extends AppCompatActivity {
 
     public void initList() {
 
-        App.getFewLatestUserStatus(new MyApp.StatusCallback() {
+        App.getFewLatestUserStatus(10, new MyApp.StatusCallback() {
             @Override
             public void onCallback(ArrayList<UserStatus> status) {
                 App.initializeList(new ArrayList<ArrayList<String>>(Arrays.asList(status.get(0).toArray(), status.get(1).toArray(), status.get(2).toArray())));

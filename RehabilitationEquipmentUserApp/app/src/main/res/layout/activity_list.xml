@@ -31,10 +31,10 @@
 
         <TextView
             android:id="@+id/tvTitle"
-            android:layout_width="169dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/title_simulation_activity"
+            android:text="@string/title_list_activity"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -67,7 +67,7 @@
         app:layout_constraintHorizontal_bias="0.918"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.924"
+        app:layout_constraintVertical_bias="0.946"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <ListView

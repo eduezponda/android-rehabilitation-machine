@@ -34,6 +34,7 @@ public class StatusActivity extends AppCompatActivity {
     private TextView textViewNameData, textViewDurationData, textViewBodyPartFocusData,
                      textViewExerciseModeData, textViewIntensityData, textViewRehabilitationEquipmentIdData;
     private int index;
+    private final int MAX = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,31 +53,6 @@ public class StatusActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
 
         index = bundle.getInt("position");
-
-        App.getFewLatestUserStatus(new MyApp.StatusCallback() {
-            @Override
-            public void onCallback(ArrayList<UserStatus> status) {
-                String name = status.get(index).getName();
-                int duration = status.get(index).getDuration();
-                String bodyPartFocus = status.get(index).getBodyPartFocus();
-                String exerciseModeData = status.get(index).getExerciseMode();
-                int intensity = status.get(index).getIntensity();
-
-                textViewNameData = findViewById(R.id.textViewNameData);
-                textViewDurationData = findViewById(R.id.textViewDurationData);
-                textViewBodyPartFocusData = findViewById(R.id.textViewBodyPartFocusData);
-                textViewExerciseModeData = findViewById(R.id.textViewExerciseModeData);
-                textViewIntensityData = findViewById(R.id.textViewIntensityData);
-
-                textViewNameData.setText(name);
-                textViewDurationData.setText(String.valueOf(duration));
-                textViewBodyPartFocusData.setText(bodyPartFocus);
-                textViewExerciseModeData.setText(exerciseModeData);
-                textViewIntensityData.setText(String.valueOf(intensity));
-            }
-        });
-
-
 
         App = (MyApp) getApplication();
 
@@ -110,31 +86,55 @@ public class StatusActivity extends AppCompatActivity {
             public void onClick(View v) {
                 textViewRehabilitationEquipmentIdData = findViewById(R.id.textViewRehabilitationEquipmentIdData);
                 textViewRehabilitationEquipmentIdData.setText("COGER DE LA API");
-                updateCharts();
+                //updateChart();
+            }
+        });
+
+        updateData();
+    }
+
+    public void updateData() {
+        App.getFewLatestUserStatus(MAX, new MyApp.StatusCallback() {
+            @Override
+            public void onCallback(ArrayList<UserStatus> status) {
+                String name = status.get(index).getName();
+                int duration = status.get(index).getDuration();
+                String bodyPartFocus = status.get(index).getBodyPartFocus();
+                String exerciseModeData = status.get(index).getExerciseMode();
+                int intensity = status.get(index).getIntensity();
+
+                textViewNameData = findViewById(R.id.textViewNameData);
+                textViewDurationData = findViewById(R.id.textViewDurationData);
+                textViewBodyPartFocusData = findViewById(R.id.textViewBodyPartFocusData);
+                textViewExerciseModeData = findViewById(R.id.textViewExerciseModeData);
+                textViewIntensityData = findViewById(R.id.textViewIntensityData);
+
+                textViewNameData.setText(name);
+                textViewDurationData.setText(String.valueOf(duration));
+                textViewBodyPartFocusData.setText(bodyPartFocus);
+                textViewExerciseModeData.setText(exerciseModeData);
+                textViewIntensityData.setText(String.valueOf(intensity));
+
+                updateChart(status);
             }
         });
     }
 
-    public void updateCharts() {
-        App.getFewLatestUserStatus(new MyApp.StatusCallback() {
-            @Override
-            public void onCallback(ArrayList<UserStatus> status) {
-                ArrayList<Integer> list = new ArrayList<>();
-                list.add(status.get(index).getDuration());
-                list.add(status.get(index).getIntensity());
+    public void updateChart(ArrayList<UserStatus> status) {
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(status.get(index).getDuration());
+        list.add(status.get(index).getIntensity());
 
-                List<BarEntry> barEntries = new ArrayList<>();
+        List<BarEntry> barEntries = new ArrayList<>();
 
-                barEntries.add(new BarEntry(1, list.get(0)));
-                barEntries.add(new BarEntry(2, list.get(1)));
+        barEntries.add(new BarEntry(1, list.get(0)));
+        barEntries.add(new BarEntry(2, list.get(1)));
 
-                BarDataSet barDataSet = new BarDataSet(barEntries, "");
-                barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-                BarData barData = new BarData(barDataSet);
-                barChart.setData(barData);
-                barChart.invalidate();
-            }
-        });
+        BarDataSet barDataSet = new BarDataSet(barEntries, "");
+        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        BarData barData = new BarData(barDataSet);
+        barChart.setData(barData);
+        barChart.invalidate();
     }
 
     private void setupBarChart(BarChart bar) {
@@ -151,8 +151,6 @@ public class StatusActivity extends AppCompatActivity {
     }
 
     private void onHistoryClicked() {
-        Intent intent = new Intent(StatusActivity.this, ListActivity.class);
-
-        startActivity(intent);
+        finish();
     }
 }

@@ -20,17 +20,17 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/titleBackgroundColor"
-        android:orientation="horizontal"
         android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayoutName"
         app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guidelineTop"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guidelineTop"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/tvTitle"
-            android:layout_width="169dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/title_simulation_activity"
@@ -43,8 +43,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/save"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </LinearLayout>
 
     <LinearLayout
@@ -82,7 +82,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.589">
+        app:layout_constraintVertical_bias="0.643">
 
         <TextView
             android:layout_width="0dp"
@@ -97,18 +97,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/hint" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayoutOperatingTemperature"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop">
-
     </LinearLayout>
 
     <LinearLayout
@@ -217,6 +205,32 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayoutRuntimeHours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
+        app:layout_constraintVertical_bias="0.517">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="@string/supervisor_label" />
+
+        <EditText
+            android:id="@+id/editTextRuntimeHours"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/hint" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -233,57 +247,19 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imgHistory"
+        android:id="@+id/imgReturn"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginStart="80dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
-        android:contentDescription="@string/history"
+        android:contentDescription="@string/return_"
         android:focusable="true"
-        android:src="@drawable/ic_history"
-        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.956" />
-
-    <ImageView
-        android:id="@+id/imgStatus"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="80dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:clickable="true"
-        android:contentDescription="@string/current_status"
-        android:focusable="true"
-        android:src="@drawable/ic_status"
+        android:src="@drawable/ic_return"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.956" />
-
-    <LinearLayout
-        android:id="@+id/linearLayoutRuntimeHours"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="347dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="@string/supervisor_label" />
-
-        <EditText
-            android:id="@+id/editTextRuntimeHours"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/hint" />
-    </LinearLayout>
+        app:layout_constraintVertical_bias="0.939" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

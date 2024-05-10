@@ -24,7 +24,7 @@ import java.util.List;
 public class SimulationActivity extends AppCompatActivity {
 
     Spinner spinnerStatus;
-    String selectedStatus = "idle";
+    String selectedStatus = "working";
     MyApp App;
 
     @Override
@@ -45,9 +45,6 @@ public class SimulationActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         App = (MyApp) getApplication();
-
-        //App.savePhoto(BitmapFactory.decodeResource(getResources(), R.drawable.mistery_man));
-        //App.getMachineStatus().setPhoto(BitmapFactory.decodeResource(getResources(), R.drawable.mistery_man));
 
         spinnerStatus = findViewById(R.id.spinnerStatus);
         spinnerStatus.setAdapter(adapter);
@@ -74,22 +71,14 @@ public class SimulationActivity extends AppCompatActivity {
             }
         });
 
-        ImageView historyButton, statusButton;
+        ImageView returnButton;
 
-        historyButton = findViewById(R.id.imgHistory);
-        statusButton = findViewById(R.id.imgStatus);
+        returnButton = findViewById(R.id.imgReturn);
 
-        historyButton.setOnClickListener(new View.OnClickListener() {
+        returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onHistoryClicked();
-            }
-        });
-
-        statusButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openStatus();
+                closeActivity();
             }
         });
     }
@@ -105,26 +94,10 @@ public class SimulationActivity extends AppCompatActivity {
 
         ((MyApp) getApplication()).saveUserStatus(name, duration, bodyPart, exerciseMode, intensity, idSupervisor, comments);
 
-        openStatus();
+        closeActivity();
     }
 
-    private void openStatus() {
-        /*Intent intent = new Intent(SimulationActivity.this, StatusActivity.class);
-
-        startActivity(intent);*/
-    }
-
-    private int parseIntOrDefault(String value) {
-        try {
-            return Integer.parseInt(value);
-        } catch (NumberFormatException e) {
-            return 0;
-        }
-    }
-
-    private void onHistoryClicked() {
-        Intent intent = new Intent(SimulationActivity.this, ListActivity.class);
-
-        startActivity(intent);
+    private void closeActivity() {
+        finish();
     }
 }

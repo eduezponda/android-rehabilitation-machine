@@ -21,9 +21,11 @@
     <string name="hint">Type something here</string>
     <string name="save">Save</string>
     <string name="edit">Edit</string>
-    <string name="status">Status</string>
-    <string name="title_simulation_activity">List Sessions</string>
+    <string name="return_">Return</string>
+    <string name="status">Update machine</string>
+    <string name="title_simulation_activity">Simulation Sessions</string>
     <string name="title_status_activity">Status Session</string>
+    <string name="title_list_activity">List Sessions</string>
 
     <string name="back4app_app_id">b3gsEpZbEgg5WnqWGTTFoTxSY3UxUy6cI0aLBXNj</string>
     <string name="back4app_client_key">RI8zcUg4XLndL5eGB7RDtbmiay7D4HIYRQQvL9h3</string>

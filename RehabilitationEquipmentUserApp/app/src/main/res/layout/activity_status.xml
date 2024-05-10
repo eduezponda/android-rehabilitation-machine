@@ -20,31 +20,24 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/titleBackgroundColor"
-        android:orientation="horizontal"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayoutName"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guidelineTop"
+        app:layout_constraintHorizontal_bias="0.038"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guidelineTop"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/tvTitle"
-            android:layout_width="169dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/title_status_activity"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textSize="20sp"
             android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/buttonEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/edit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
 
     </LinearLayout>
 
@@ -56,13 +49,14 @@
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.094">
+        app:layout_constraintVertical_bias="0.088">
 
         <TextView
             android:id="@+id/textViewNameLabel"
-            android:layout_width="16dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -81,13 +75,15 @@
         android:id="@+id/linearLayoutIntensity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="225dp"
         android:orientation="horizontal"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.308">
+        app:layout_constraintTop_toTopOf="@+id/titleLayout"
+        app:layout_constraintVertical_bias="0.004">
 
         <TextView
             android:id="@+id/textViewIntensityLabel"
@@ -113,10 +109,11 @@
         android:orientation="horizontal"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.253">
+        app:layout_constraintVertical_bias="0.289">
 
         <TextView
             android:id="@+id/textViewExerciseModeLabel"
@@ -139,13 +136,15 @@
         android:id="@+id/linearLayoutType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="126dp"
         android:orientation="horizontal"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.198">
+        app:layout_constraintTop_toTopOf="@+id/titleLayout"
+        app:layout_constraintVertical_bias="0.031">
 
         <TextView
             android:id="@+id/TextViewBodyPartFocusLabel"
@@ -168,14 +167,15 @@
         android:id="@+id/linearLayoutDuration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="94dp"
         android:orientation="horizontal"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.143">
+        app:layout_constraintTop_toTopOf="@+id/titleLayout"
+        app:layout_constraintVertical_bias="0.007">
 
         <TextView
             android:id="@+id/textViewDurationLabel"
@@ -188,6 +188,37 @@
         <TextView
             android:id="@+id/textViewDurationData"
             android:layout_width="198dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutRuntimeHours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="274dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/titleLayout"
+        app:layout_constraintVertical_bias="0.002">
+
+        <TextView
+            android:id="@+id/textViewRehabilitationEquipmentIdLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="@string/rehabilitation_equipment_label" />
+
+        <TextView
+            android:id="@+id/textViewRehabilitationEquipmentIdData"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1" />
@@ -221,7 +252,7 @@
         android:src="@drawable/ic_history"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintHorizontal_bias="0.205"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.956" />
@@ -237,40 +268,10 @@
         android:src="@drawable/ic_edit"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.756"
+        app:layout_constraintHorizontal_bias="0.788"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.956" />
-
-    <LinearLayout
-        android:id="@+id/linearLayoutRuntimeHours"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.454">
-
-        <TextView
-            android:id="@+id/textViewRehabilitationEquipmentIdLabel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="@string/rehabilitation_equipment_label" />
-
-        <TextView
-            android:id="@+id/textViewRehabilitationEquipmentIdData"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/barChartContainer"
@@ -300,8 +301,9 @@
         android:text="@string/status"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.828" />
+        app:layout_constraintVertical_bias="0.825" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
