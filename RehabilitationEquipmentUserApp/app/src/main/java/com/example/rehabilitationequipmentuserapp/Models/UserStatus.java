@@ -3,6 +3,9 @@ package com.example.rehabilitationequipmentuserapp.Models;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 @ParseClassName("UserStatus")
 public class UserStatus extends ParseObject {
     public static final String KEY_NAME = "sessionName";
@@ -18,7 +21,13 @@ public class UserStatus extends ParseObject {
     }
 
     public void init(String name) {
-        setName(name);
+        setName(name); // Initializing name with the provided value
+        setDuration(45); // Example duration in minutes
+        setBodyPartFocus("Arm"); // Example body part
+        setExerciseMode("Moderate Impact"); // Example exercise mode
+        setIntensity(3); // Example intensity on a scale of 1-5
+        setIdSupervisor("Supervisor X"); // Example supervisor ID
+        setComments("No significant changes observed during the session."); // Example comment
     }
 
     public String getName() {
@@ -75,5 +84,10 @@ public class UserStatus extends ParseObject {
 
     public void setComments(String comment) {
         put(KEY_COMMENT, comment);
+    }
+
+    public ArrayList<String> toArray()
+    {
+        return (new ArrayList<String>(Arrays.asList(getExerciseMode(), "Body Part: " + getBodyPartFocus() + " and Intensity: "+ getIntensity(), getName())));
     }
 }

@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/blood_pressure_label" />
+            android:text="@string/comments_label" />
 
         <EditText
             android:id="@+id/editTextBloodPressure"
@@ -127,7 +127,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/power_consumption_label" />
+            android:text="@string/intensity_label" />
 
         <SeekBar
             android:id="@+id/seekBarPowerConsumption"
@@ -205,7 +205,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/battery_status_label" />
+            android:text="@string/duration_label" />
 
         <SeekBar
             android:id="@+id/seekBarBatteryStatus"
@@ -276,7 +276,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/runtime_hours_label" />
+            android:text="@string/supervisor_label" />
 
         <EditText
             android:id="@+id/editTextRuntimeHours"

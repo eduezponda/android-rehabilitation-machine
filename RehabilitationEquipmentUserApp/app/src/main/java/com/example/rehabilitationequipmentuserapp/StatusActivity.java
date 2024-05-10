@@ -151,7 +151,7 @@ public class StatusActivity extends AppCompatActivity {
     }
 
     private void onHistoryClicked() {
-        Intent intent = new Intent(StatusActivity.this, CreateSimulationActiviy.class);
+        Intent intent = new Intent(StatusActivity.this, ListActivity.class);
 
         startActivity(intent);
     }

@@ -2,7 +2,7 @@
 <resources>
     <string-array name="status_options">
         <item>working</item>
-        <item>idle</item>
+        <item>sport</item>
         <item>maintenance</item>
     </string-array>
 </resources>

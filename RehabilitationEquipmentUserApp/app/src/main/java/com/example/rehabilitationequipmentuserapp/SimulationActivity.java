@@ -1,5 +1,6 @@
 package com.example.rehabilitationequipmentuserapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -94,17 +95,21 @@ public class SimulationActivity extends AppCompatActivity {
     }
 
     private void saveData() {
-        String id = ((EditText) findViewById(R.id.editTextId)).getText().toString();
-        String bloodPressure = ((EditText) findViewById(R.id.editTextBloodPressure)).getText().toString();
+        String name =((EditText) findViewById(R.id.editTextId)).getText().toString();
+        int duration = ((SeekBar) findViewById(R.id.seekBarBatteryStatus)).getProgress();
+        String bodyPart =((EditText) findViewById(R.id.editTextType)).getText().toString();
+        int intensity = ((SeekBar) findViewById(R.id.seekBarPowerConsumption)).getProgress();
+        String exerciseMode = ((Spinner) findViewById(R.id.spinnerStatus)).getSelectedItem().toString();
+        String idSupervisor =((EditText) findViewById(R.id.editTextRuntimeHours)).getText().toString();
+        String comments =((EditText) findViewById(R.id.editTextBloodPressure)).getText().toString();
 
-
-        //((MyApp) getApplication()).saveUserStatus(id, heartRate, bloodPressure,oxygenSaturation);
+        ((MyApp) getApplication()).saveUserStatus(name, duration, bodyPart, exerciseMode, intensity, idSupervisor, comments);
 
         openStatus();
     }
 
     private void openStatus() {
-        /*Intent intent = new Intent(SimulationActivity.this, MachineStatusActivity.class);
+        /*Intent intent = new Intent(SimulationActivity.this, StatusActivity.class);
 
         startActivity(intent);*/
     }
@@ -118,8 +123,8 @@ public class SimulationActivity extends AppCompatActivity {
     }
 
     private void onHistoryClicked() {
-        /*Intent intent = new Intent(SimulationActivity.this, HistoryActivity.class);
+        Intent intent = new Intent(SimulationActivity.this, ListActivity.class);
 
-        startActivity(intent);*/
+        startActivity(intent);
     }
 }

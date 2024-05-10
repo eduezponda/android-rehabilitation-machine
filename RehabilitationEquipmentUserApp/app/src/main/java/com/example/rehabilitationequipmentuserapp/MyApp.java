@@ -37,17 +37,25 @@ public class MyApp extends Application {
 
         getFewLatestUserStatus(new StatusCallback() {
             @Override
-            public void onCallback(ArrayList<UserStatus> status) {}
+            public void onCallback(ArrayList<UserStatus> status) {
+                statusArray = status;
+            }
         });
     }
 
-    /*private void initData() {
-        userStatus = new userStatus();
-        userStatus.init("5Rehabili3841", 80, "Kinesioterapia", "working",200, 20, 9, 150, "120/80", 97);
+
+    /*private void initData()
+    {
+        for(int i= 0; i<3; i++)
+        {
+            userStatus = new UserStatus();
+            userStatus.init("nombre");
+            saveUserStatusToBack4App();
+
+        }
     }*/
-    public UserStatus getUserStatus() {
-        return userStatus;
-    }
+
+    public UserStatus getUserStatus() {return userStatus;}
 
     public void saveUserStatus(String name, int duration, String bodyPart, String exerciseMode, int intensity, String idSupervisor, String comment) {
         UserStatus userStatus = new UserStatus();
@@ -119,7 +127,7 @@ public class MyApp extends Application {
         pointList.clear();
     }
 
-    public void initializeList(ArrayList<String> data) {
+    public void initializeList(ArrayList<ArrayList<String>> data) {
 
         InterestPoint aInterestPoint;
         clear();

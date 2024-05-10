@@ -20,6 +20,10 @@
             android:name=".StatusActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".ListActivity"
+            android:exported="false" />
+
         <meta-data
             android:name="com.parse.SERVER_URL"
             android:value="@string/back4app_server_url" />
