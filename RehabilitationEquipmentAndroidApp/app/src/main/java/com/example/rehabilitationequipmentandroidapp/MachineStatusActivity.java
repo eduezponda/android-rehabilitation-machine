@@ -65,7 +65,7 @@ public class MachineStatusActivity extends AppCompatActivity {
     private void updateUIWithData() {
         MachineStatus machineStatus = App.getMachineStatus();
 
-        ((TextView) findViewById(R.id.tvIdValue)).setText(String.valueOf(machineStatus.getId()));
+        ((TextView) findViewById(R.id.tvIdValue)).setText(Integer.toString(machineStatus.getId()));
 
         progressBar.setProgress(machineStatus.getBatteryStatus());
 
@@ -73,7 +73,7 @@ public class MachineStatusActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.tvPowerConsumptionValue)).setText(machineStatus.getPowerConsumption() + "W");
         ((TextView) findViewById(R.id.tvOperatingTemperatureValue)).setText(machineStatus.getOperatingTemperature() + "º");
         ((TextView) findViewById(R.id.tvRuntimeHoursValue)).setText(machineStatus.getRuntimeHours() + "h");
-        ((TextView) findViewById(R.id.tvUserId)).setText(machineStatus.getUserId());
+        ((TextView) findViewById(R.id.tvUserId)).setText(Integer.toString(machineStatus.getOrderId()));
 
         ((TextView) findViewById(R.id.tvHeartRateValue)).setText(machineStatus.getHeartRate() + " bpm");
         ((TextView) findViewById(R.id.tvOxygenSaturationValue)).setText(machineStatus.getOxygenSaturation() + "%");

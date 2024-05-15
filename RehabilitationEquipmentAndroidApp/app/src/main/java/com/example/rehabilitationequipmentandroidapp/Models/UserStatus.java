@@ -1,4 +1,4 @@
-package com.example.rehabilitationequipmentuserapp.Models;
+package com.example.rehabilitationequipmentandroidapp.Models;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;

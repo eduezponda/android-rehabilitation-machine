@@ -3,6 +3,7 @@ package com.example.rehabilitationequipmentuserapp;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -120,11 +121,11 @@ public class SimulationActivity extends AppCompatActivity {
             App.updateUserStatus(index, BitmapFactory.decodeResource(getResources(), image), name, duration, bodyPart, exerciseMode, intensity, idSupervisor, comments);
         }
 
+        setResult(RESULT_OK);
         closeActivity();
     }
 
     private void closeActivity() {
-        setResult(RESULT_OK);
         finish();
     }
 }

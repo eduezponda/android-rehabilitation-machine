@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.example.rehabilitationequipmentuserapp.Models.InterestPoint;
+import com.example.rehabilitationequipmentuserapp.Models.MachineStatus;
 import com.example.rehabilitationequipmentuserapp.Models.UserStatus;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -28,6 +29,7 @@ public class MyApp extends Application {
         super.onCreate();
 
         ParseObject.registerSubclass(UserStatus.class);
+        ParseObject.registerSubclass(MachineStatus.class);
         Parse.initialize(new Parse.Configuration.Builder(getApplicationContext())
                 .applicationId(getString(R.string.back4app_app_id))
                 .clientKey(getString(R.string.back4app_client_key))
@@ -53,7 +55,7 @@ public class MyApp extends Application {
         for(int i= 0; i<3; i++)
         {
             userStatus = new UserStatus();
-            userStatus.init("nombre");
+            userStatus.init("nombre", i);
             saveUserStatusToBack4App();
 
         }
@@ -93,16 +95,16 @@ public class MyApp extends Application {
     public void updateUserStatus(int index, Bitmap image, String name, int duration, String bodyPart, String exerciseMode, int intensity, String idSupervisor, String comment) {
         getFewLatestUserStatus(10, new StatusCallback() {
             @Override
-            public void onCallback(ArrayList<UserStatus> userStatus_) {
-                userStatus = userStatus_.get(index);
+            public void onCallback(ArrayList<UserStatus> userStatusList) {
+                userStatus = userStatusList.get(index);
 
-                userStatus.setName(name);
+                if(name!=""){userStatus.setName(name);}
                 userStatus.setDuration(duration);
-                userStatus.setBodyPartFocus(bodyPart);
+                if(bodyPart!=""){userStatus.setBodyPartFocus(bodyPart);}
                 userStatus.setExerciseMode(exerciseMode);
                 userStatus.setIntensity(intensity);
-                userStatus.setIdSupervisor(idSupervisor);
-                userStatus.setComments(comment);
+                if(idSupervisor!=""){userStatus.setIdSupervisor(idSupervisor);}
+                if(comment!=""){userStatus.setComments(comment);}
 
                 pointList.get(index).setData(userStatus.toArray());
                 pointList.get(index).setImage(image);
@@ -136,6 +138,10 @@ public class MyApp extends Application {
         void onCallback(ArrayList<UserStatus> statusArray);
     }
 
+    public interface MachineCallback {
+        void onCallback(ArrayList<MachineStatus> statusArray);
+    }
+
     public void getFewLatestUserStatus(int limit, StatusCallback callback) {
         ParseQuery<UserStatus> query = ParseQuery.getQuery(UserStatus.class);
         query.orderByDescending("createdAt").setLimit(limit);  // Cambiar el limite para mostrar más elementos en la lista de histórico de pedidos
@@ -143,6 +149,17 @@ public class MyApp extends Application {
             if (e == null) {
                 callback.onCallback(new ArrayList<>(statusArrayList));
                 this.statusArray = new ArrayList<UserStatus>(statusArrayList);
+            }
+        });
+    }
+
+    public void getMachine(MachineCallback callback) {
+        ParseQuery<MachineStatus> query = ParseQuery.getQuery(MachineStatus.class);
+        query.whereEqualTo("orderId", userStatus.getId());
+        query.orderByDescending("createdAt").setLimit(1);
+        query.findInBackground((machineArrayList, e) -> {
+            if (e == null) {
+                callback.onCallback(new ArrayList<>(machineArrayList));
             }
         });
     }

@@ -5,10 +5,4 @@
         <item>idle</item>
         <item>maintenance</item>
     </string-array>
-
-    <string-array name="userId_options">
-        <item>working</item>
-        <item>idle</item>
-        <item>maintenance</item>
-    </string-array>
 </resources>

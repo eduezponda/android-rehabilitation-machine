@@ -18,8 +18,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.rehabilitationequipmentandroidapp.Models.MachineStatus;
+import com.example.rehabilitationequipmentandroidapp.Models.UserStatus;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class SimulationActivity extends AppCompatActivity {
@@ -27,8 +31,9 @@ public class SimulationActivity extends AppCompatActivity {
     Spinner spinnerStatus;
     Spinner spinnerUser;
     String selectedStatus = "idle";
-    String selectedUserId = "mazapan";
+    int selectedUserId = -1;
     MyApp App;
+    ArrayList<String> userList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +46,19 @@ public class SimulationActivity extends AppCompatActivity {
             return insets;
         });
 
+        App = (MyApp) getApplication();
+
         List<String> statusOptions = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.status_options)));
         statusOptions.add(0, getString(R.string.prompt_select_option));
+
+        ArrayAdapter<String> adapterUser = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, userList);
+        adapterUser.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         List<String> userOptions = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.status_options)));
         userOptions.add(0, getString(R.string.prompt_select_option));
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, statusOptions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        ArrayAdapter<String> adapterUser = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, userOptions);
-        adapterUser.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        App = (MyApp) getApplication();
 
         App.savePhoto(BitmapFactory.decodeResource(getResources(), R.drawable.mistery_man));
         App.getMachineStatus().setPhoto(BitmapFactory.decodeResource(getResources(), R.drawable.mistery_man));
@@ -66,6 +71,24 @@ public class SimulationActivity extends AppCompatActivity {
         spinnerUser.setAdapter(adapterUser);
         spinnerUser.setSelection(0, false);
 
+        App.getOrders(new MyApp.UserCallback() {
+            @Override
+            public void onCallback(ArrayList<UserStatus> userOrdersList) {
+
+                userList = new ArrayList<>();
+                for (UserStatus user : userOrdersList) {
+                    if (user.getMachineId() == -1) {
+                        userList.add("Order " + user.getId());
+                    }
+                }
+                userList.add(0, "Select an order");
+
+                ArrayAdapter<String> adapter = (ArrayAdapter<String>) spinnerUser.getAdapter();
+                adapter.clear();
+                adapter.addAll(userList);
+                adapter.notifyDataSetChanged();
+            }
+        });
 
         spinnerStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -84,7 +107,16 @@ public class SimulationActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position > 0) {
-                    selectedUserId = parent.getItemAtPosition(position).toString();
+                    String selectedText = parent.getItemAtPosition(position).toString();
+
+                    String[] parts = selectedText.split(" ");
+                    if (parts.length >= 2) {
+                        try {
+                            selectedUserId = Integer.parseInt(parts[1]);
+                        } catch (NumberFormatException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             }
             @Override
@@ -121,8 +153,37 @@ public class SimulationActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fetchOrdersAndUpdateUI();
+    }
+
+    private void fetchOrdersAndUpdateUI() {
+        App.getOrders(new MyApp.UserCallback() {
+            @Override
+            public void onCallback(ArrayList<UserStatus> userOrdersList) {
+                userList.clear();
+                for (UserStatus user : userOrdersList) {
+                    if (user.getMachineId() == -1) {
+                        userList.add("Order " + user.getId());
+                    }
+                }
+                userList.add(0, "Select an order");
+
+                // Ensure ArrayAdapter is updated on the main thread
+                runOnUiThread(() -> {
+                    ArrayAdapter<String> adapter = (ArrayAdapter<String>) spinnerUser.getAdapter();
+                    adapter.clear();
+                    adapter.addAll(userList);
+                    adapter.notifyDataSetChanged();
+                });
+            }
+        });
+    }
+
+
     private void saveData() {
-        String id = ((EditText) findViewById(R.id.editTextId)).getText().toString();
         int runtimeHours = parseIntOrDefault(((EditText) findViewById(R.id.editTextRuntimeHours)).getText().toString());
 
         int batteryStatus = ((SeekBar) findViewById(R.id.seekBarBatteryStatus)).getProgress();
@@ -131,8 +192,15 @@ public class SimulationActivity extends AppCompatActivity {
         int heartRate = ((SeekBar) findViewById(R.id.seekBarHeartRate)).getProgress();
         int oxygenSaturation = ((SeekBar) findViewById(R.id.seekBarOxygenSaturation)).getProgress();
 
-        ((MyApp) getApplication()).saveMachineStatus(id, batteryStatus, selectedStatus, selectedUserId, powerConsumption, operatingTemperature, runtimeHours, heartRate, oxygenSaturation);
+        App.saveMachineStatus(App.getMachineStatus().getId()+1, batteryStatus, selectedStatus, selectedUserId, powerConsumption, operatingTemperature, runtimeHours, heartRate, oxygenSaturation);
 
+        App.setMachineIdToItsOrder(new MyApp.SetUserMachineCallback() {
+            @Override
+            public void onCallback(UserStatus userStatus) {
+                userStatus.setMachineId(App.getMachineStatus().getId());
+                App.saveUserStatusToBack4App(userStatus);
+            }
+        });
         openStatus();
     }
 

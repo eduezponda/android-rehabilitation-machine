@@ -1,4 +1,4 @@
-package com.example.rehabilitationequipmentandroidapp.Models;
+package com.example.rehabilitationequipmentuserapp.Models;
 
 import android.graphics.Bitmap;
 

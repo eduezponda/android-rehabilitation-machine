@@ -20,7 +20,7 @@ public class InterestPoint {
 
     public void setData(ArrayList<String> Data) {
         this.Data = Data.get(1);
-        this.Name = Data.get(0);
+        this.Name = Data.get(2);
     }
 
     public String getName() {return this.Name;}

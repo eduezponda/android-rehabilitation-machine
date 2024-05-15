@@ -2,6 +2,7 @@ package com.example.rehabilitationequipmentuserapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +18,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.rehabilitationequipmentuserapp.Models.MachineStatus;
 import com.example.rehabilitationequipmentuserapp.Models.UserStatus;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -34,6 +36,7 @@ public class StatusActivity extends AppCompatActivity {
     private TextView textViewNameData, textViewDurationData, textViewBodyPartFocusData,
                      textViewExerciseModeData, textViewIntensityData, textViewRehabilitationEquipmentIdData;
     private int index;
+    private MachineStatus machine;
     private final int MAX = 10;
 
     @Override
@@ -65,6 +68,9 @@ public class StatusActivity extends AppCompatActivity {
         historyButton = findViewById(R.id.imgHistory);
         editButton = findViewById(R.id.imgEdit);
 
+        textViewRehabilitationEquipmentIdData = findViewById(R.id.textViewRehabilitationEquipmentIdData);
+        fetchAndDisplayMachineStatus();
+
         historyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,13 +90,26 @@ public class StatusActivity extends AppCompatActivity {
         buttonStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textViewRehabilitationEquipmentIdData = findViewById(R.id.textViewRehabilitationEquipmentIdData);
-                textViewRehabilitationEquipmentIdData.setText("COGER DE LA API");
-                //updateChart();
+                fetchAndDisplayMachineStatus();
             }
         });
 
         updateData();
+    }
+
+    private void fetchAndDisplayMachineStatus() {
+        App.getMachine(new MyApp.MachineCallback() {
+            @Override
+            public void onCallback(ArrayList<MachineStatus> status) {
+                if(status.size() > 0) {
+                    machine = status.get(0);
+                    textViewRehabilitationEquipmentIdData.setText("Machine " + machine.getId());
+                    updateChart(machine);
+                } else {
+                    textViewRehabilitationEquipmentIdData.setText("No Machine");
+                }
+            }
+        });
     }
 
     public void updateData() {
@@ -120,6 +139,22 @@ public class StatusActivity extends AppCompatActivity {
         });
     }
 
+    public void updateChart(MachineStatus machine) {
+
+        List<BarEntry> barEntries = new ArrayList<>();
+
+        barEntries.add(new BarEntry(1, machine.getBatteryStatus()));
+        barEntries.add(new BarEntry(2, machine.getRuntimeHours()));
+        barEntries.add(new BarEntry(3, (float) machine.getOperatingTemperature()));
+        barEntries.add(new BarEntry(4, (float)machine.getPowerConsumption()));
+
+        BarDataSet barDataSet = new BarDataSet(barEntries, "Battery, Run Hº, Tº, Power");
+        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        BarData barData = new BarData(barDataSet);
+        barChart.setData(barData);
+        barChart.invalidate();
+    }
+
     public void updateChart(ArrayList<UserStatus> status) {
         ArrayList<Integer> list = new ArrayList<>();
         list.add(status.get(index).getDuration());
@@ -130,7 +165,7 @@ public class StatusActivity extends AppCompatActivity {
         barEntries.add(new BarEntry(1, list.get(0)));
         barEntries.add(new BarEntry(2, list.get(1)));
 
-        BarDataSet barDataSet = new BarDataSet(barEntries, "");
+        BarDataSet barDataSet = new BarDataSet(barEntries, "Duration, Intensity");
         barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         BarData barData = new BarData(barDataSet);
         barChart.setData(barData);
@@ -146,6 +181,7 @@ public class StatusActivity extends AppCompatActivity {
         Intent intent = new Intent(StatusActivity.this, SimulationActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt("position", index);
+        intent.putExtras(bundle);
 
         startActivity(intent);
     }

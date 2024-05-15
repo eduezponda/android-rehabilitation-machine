@@ -18,6 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.CountedCompleter;
 
 public class ListActivity extends AppCompatActivity implements MyApp.DataInitializationListener{
@@ -49,7 +50,7 @@ public class ListActivity extends AppCompatActivity implements MyApp.DataInitial
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("position", position);
-                Intent intent = new Intent(App, StatusActivity.class);
+                Intent intent = new Intent(ListActivity.this, StatusActivity.class);
                 intent.putExtras(bundle);
                 startActivityForResult(intent, SUBACTIVITY_MODIFY);
             }
@@ -59,7 +60,7 @@ public class ListActivity extends AppCompatActivity implements MyApp.DataInitial
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(App, SimulationActivity.class);
+                Intent intent = new Intent(ListActivity.this, SimulationActivity.class);
                 startActivityForResult(intent, SUBACTIVITY_MODIFY);
             }
         });

@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="45dp"/>
+        app:layout_constraintGuide_begin="20dp"/>
 
     <LinearLayout
         android:id="@+id/titleLayout"
@@ -207,7 +207,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/titleLayout"
-        app:layout_constraintVertical_bias="0.002">
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/textViewRehabilitationEquipmentIdLabel"
@@ -253,10 +253,10 @@
         android:src="@drawable/ic_history"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintHorizontal_bias="0.202"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.956" />
+        app:layout_constraintVertical_bias="0.975" />
 
     <ImageView
         android:id="@+id/imgEdit"
@@ -269,10 +269,10 @@
         android:src="@drawable/ic_edit"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.788"
+        app:layout_constraintHorizontal_bias="0.785"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.956" />
+        app:layout_constraintVertical_bias="0.975" />
 
     <LinearLayout
         android:id="@+id/barChartContainer"
@@ -285,7 +285,7 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/titleLayout"
-        app:layout_constraintVertical_bias="0.646">
+        app:layout_constraintVertical_bias="0.701">
 
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/barChart"
@@ -305,6 +305,6 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.825" />
+        app:layout_constraintVertical_bias="0.853" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,13 +20,11 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/titleBackgroundColor"
-        android:orientation="horizontal"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayoutId"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guidelineTop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="@id/guidelineTop">
 
         <TextView
             android:id="@+id/tvTitle"
@@ -43,12 +41,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/save"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayoutId"
+        android:id="@+id/linearLayoutBatteryStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -56,21 +54,46 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.094">
+        app:layout_constraintVertical_bias="0.088">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/id_label" />
+            android:text="@string/battery_status_label" />
 
-        <EditText
-            android:id="@+id/editTextId"
-            android:layout_width="80dp"
+        <SeekBar
+            android:id="@+id/seekBarBatteryStatus"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/hint" />
+            android:max="100"
+            android:progress="50" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutUserId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
+        app:layout_constraintVertical_bias="0.715">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="@string/user_id_label" />
+
+        <Spinner
+            android:id="@+id/spinnerUserId"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
@@ -82,7 +105,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.741">
+        app:layout_constraintVertical_bias="0.629">
 
         <TextView
             android:layout_width="0dp"
@@ -109,7 +132,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.678">
+        app:layout_constraintVertical_bias="0.566">
 
         <TextView
             android:layout_width="0dp"
@@ -128,30 +151,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayoutUserId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.826">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="@string/user_id_label" />
-
-        <Spinner
-            android:id="@+id/spinnerUserId"
-            android:layout_width="230dp"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/linearLayoutUsersHealth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -160,7 +159,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.598">
+        app:layout_constraintVertical_bias="0.488">
 
         <TextView
             android:layout_width="0dp"
@@ -180,7 +179,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.528">
+        app:layout_constraintVertical_bias="0.413">
 
         <TextView
             android:layout_width="0dp"
@@ -206,7 +205,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.441">
+        app:layout_constraintVertical_bias="0.328">
 
         <TextView
             android:layout_width="0dp"
@@ -233,7 +232,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.349">
+        app:layout_constraintVertical_bias="0.239">
 
         <TextView
             android:layout_width="0dp"
@@ -260,7 +259,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.28">
+        app:layout_constraintVertical_bias="0.168">
 
         <TextView
             android:layout_width="0dp"
@@ -274,33 +273,6 @@
             android:layout_width="230dp"
             android:layout_height="wrap_content" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayoutBatteryStatus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.198">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="@string/battery_status_label" />
-
-        <SeekBar
-            android:id="@+id/seekBarBatteryStatus"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:max="100"
-            android:progress="50" />
     </LinearLayout>
 
     <LinearLayout
