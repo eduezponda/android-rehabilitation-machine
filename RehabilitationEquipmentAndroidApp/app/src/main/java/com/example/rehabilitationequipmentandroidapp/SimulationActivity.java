@@ -194,13 +194,15 @@ public class SimulationActivity extends AppCompatActivity {
 
         App.saveMachineStatus(App.getMachineStatus().getId()+1, batteryStatus, selectedStatus, selectedUserId, powerConsumption, operatingTemperature, runtimeHours, heartRate, oxygenSaturation);
 
-        App.setMachineIdToItsOrder(new MyApp.SetUserMachineCallback() {
-            @Override
-            public void onCallback(UserStatus userStatus) {
-                userStatus.setMachineId(App.getMachineStatus().getId());
-                App.saveUserStatusToBack4App(userStatus);
-            }
-        });
+        if (selectedUserId!=-1) {
+            App.setMachineIdToItsOrder(selectedUserId, new MyApp.SetUserMachineCallback() {
+                @Override
+                public void onCallback(UserStatus userStatus) {
+                    userStatus.setMachineId(App.getMachineStatus().getId());
+                    App.saveUserStatusToBack4App(userStatus);
+                }
+            });
+        }
         openStatus();
     }
 

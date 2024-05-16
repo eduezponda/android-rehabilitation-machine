@@ -134,9 +134,9 @@ public class MyApp extends Application {
         void onCallback(UserStatus userStatus);
     }
 
-    public void setMachineIdToItsOrder(SetUserMachineCallback callback){
+    public void setMachineIdToItsOrder(int id, SetUserMachineCallback callback){
         ParseQuery<UserStatus> query = ParseQuery.getQuery(UserStatus.class);
-        query.whereEqualTo("sessionId", machineStatus.getOrderId());
+        query.whereEqualTo("sessionId", id);
         query.orderByAscending("createdAt");
         query.findInBackground((list, e) -> {
             if (e == null) {
