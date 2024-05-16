@@ -77,6 +77,7 @@ public class MyApp extends Application {
         userStatus.setIntensity(intensity);
         userStatus.setIdSupervisor(idSupervisor);
         userStatus.setComments(comment);
+        userStatus.setMachineId(-1);
 
         InterestPoint aInterestPoint;
 
@@ -89,7 +90,14 @@ public class MyApp extends Application {
             pointList.remove(10);
         }
 
-        saveUserStatusToBack4App();
+        getFewLatestUserStatus(1, new StatusCallback() {
+            @Override
+            public void onCallback(ArrayList<UserStatus> userStatusList) {
+                userStatus.setId(userStatusList.get(0).getId()+1);
+
+                saveUserStatusToBack4App();
+            }
+        });
     }
 
     public void updateUserStatus(int index, Bitmap image, String name, int duration, String bodyPart, String exerciseMode, int intensity, String idSupervisor, String comment) {
@@ -98,13 +106,13 @@ public class MyApp extends Application {
             public void onCallback(ArrayList<UserStatus> userStatusList) {
                 userStatus = userStatusList.get(index);
 
-                if(name!=""){userStatus.setName(name);}
+                if(!name.isEmpty()){userStatus.setName(name);}
                 userStatus.setDuration(duration);
-                if(bodyPart!=""){userStatus.setBodyPartFocus(bodyPart);}
+                if(!bodyPart.isEmpty()){userStatus.setBodyPartFocus(bodyPart);}
                 userStatus.setExerciseMode(exerciseMode);
                 userStatus.setIntensity(intensity);
-                if(idSupervisor!=""){userStatus.setIdSupervisor(idSupervisor);}
-                if(comment!=""){userStatus.setComments(comment);}
+                if(!idSupervisor.isEmpty()){userStatus.setIdSupervisor(idSupervisor);}
+                if(!comment.isEmpty()){userStatus.setComments(comment);}
 
                 pointList.get(index).setData(userStatus.toArray());
                 pointList.get(index).setImage(image);
@@ -153,9 +161,9 @@ public class MyApp extends Application {
         });
     }
 
-    public void getMachine(MachineCallback callback) {
+    public void getMachine(int id, MachineCallback callback) {
         ParseQuery<MachineStatus> query = ParseQuery.getQuery(MachineStatus.class);
-        query.whereEqualTo("orderId", userStatus.getId());
+        query.whereEqualTo("orderId", id);
         query.orderByDescending("createdAt").setLimit(1);
         query.findInBackground((machineArrayList, e) -> {
             if (e == null) {

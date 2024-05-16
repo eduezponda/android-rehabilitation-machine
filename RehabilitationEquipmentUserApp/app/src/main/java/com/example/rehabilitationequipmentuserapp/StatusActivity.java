@@ -2,6 +2,8 @@ package com.example.rehabilitationequipmentuserapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,6 +40,8 @@ public class StatusActivity extends AppCompatActivity {
     private int index;
     private MachineStatus machine;
     private final int MAX = 10;
+    private final int SUBACTIVITY_MODIFY = 5;
+    private int userIndex = -2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,13 @@ public class StatusActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
 
         index = bundle.getInt("position");
+
+        App.getFewLatestUserStatus(MAX, new MyApp.StatusCallback() {
+            @Override
+            public void onCallback(ArrayList<UserStatus> status) {
+                userIndex = status.get(index).getId();
+            }
+        });
 
         App = (MyApp) getApplication();
 
@@ -94,11 +105,11 @@ public class StatusActivity extends AppCompatActivity {
             }
         });
 
-        updateData();
+        updateData(machine==null);
     }
 
     private void fetchAndDisplayMachineStatus() {
-        App.getMachine(new MyApp.MachineCallback() {
+        App.getMachine(userIndex, new MyApp.MachineCallback() {
             @Override
             public void onCallback(ArrayList<MachineStatus> status) {
                 if(status.size() > 0) {
@@ -112,7 +123,7 @@ public class StatusActivity extends AppCompatActivity {
         });
     }
 
-    public void updateData() {
+    public void updateData(Boolean chart) {
         App.getFewLatestUserStatus(MAX, new MyApp.StatusCallback() {
             @Override
             public void onCallback(ArrayList<UserStatus> status) {
@@ -134,12 +145,18 @@ public class StatusActivity extends AppCompatActivity {
                 textViewExerciseModeData.setText(exerciseModeData);
                 textViewIntensityData.setText(String.valueOf(intensity));
 
-                updateChart(status);
+                if (chart) {
+                    updateChart(status);
+                }
+                else {
+                    updateChart(machine);
+                }
             }
         });
     }
 
     public void updateChart(MachineStatus machine) {
+        Log.e("Updating chart", "");
 
         List<BarEntry> barEntries = new ArrayList<>();
 
@@ -177,13 +194,27 @@ public class StatusActivity extends AppCompatActivity {
         bar.setDrawGridBackground(false);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    updateData(machine == null);
+                }
+            }, 500);
+        }
+    }
+
     private void openEdit() {
         Intent intent = new Intent(StatusActivity.this, SimulationActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt("position", index);
         intent.putExtras(bundle);
 
-        startActivity(intent);
+        startActivityForResult(intent, SUBACTIVITY_MODIFY);
     }
 
     private void onHistoryClicked() {
